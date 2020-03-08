@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gerenciamento_de_Biblioteca.Models.Enum;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,35 +14,52 @@ namespace Gerenciamento_de_Biblioteca.Models
         [Required, Column("id")]
         public int IdUsuario { get; set; }
 
-        [Required, Column("nome")]
+        [Required, Column("nome_completo")]
         //[StringLength(100, ErrorMessage = "O Campo {0} pode ter no máximo {1} e minimo {2} caracteres", MinimumLength = 7)]
-        public string Nome { get; set; }
+        public string NomeCompelto { get; set; }
+
+        [Required, DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [Required]
+        public string Senha { get; set; }
 
         [Required, Column("data_nascimento")]
         public DateTime DataNascimento { get; set; }
 
-        [Required, Column("rua")]
+        [Required]
         public string Rua { get; set; }
-
-        [Required, Column("numero")]
+       
         public int Numero { get; set; }
-
-        [Required, Column("complemento")]
+        
         public string Complemento { get; set; }
 
-        [Required, Column("bairro")]
+        [Required]
         public string Bairro { get; set; }
 
-        [Required, Column("cidade")]
+        [Required]
         public string Cidade { get; set; }
 
-        [Required, Column("estado")]
+        [Required]
         public string Estado { get; set; }
 
-        [Required, Column("multa")]
+        
         public string Multa { get; set; }
 
+        [Required]
+        public EnumRoles Roles { get; set; }
+
+        public Guid Token { get; set; }
+
+
+
         //Relacionamento
-        public virtual Login Login { get; set; }
+
+
+        public static void Map(ModelBuilder modelBuilder)
+        {
+           
+                
+        }
     }
 }
